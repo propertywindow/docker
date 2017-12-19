@@ -75,6 +75,6 @@ USER vagrant
 # Add Symfony alias
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias ll="ls -lah"' >> ~/.bashrc
-RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+#RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 WORKDIR /app
