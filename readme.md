@@ -1,4 +1,4 @@
-Property Window Engine [![by](https://img.shields.io/badge/by-%40marcgeurts-ff69b4.svg?style=flat-square)](https://github.com/marcgeurts)
+Property Window Docker [![by](https://img.shields.io/badge/by-%40marcgeurts-ff69b4.svg?style=flat-square)](https://github.com/marcgeurts)
 ========================
 
 This is a docker repository that runs on [Docker](https://www.docker.com/).
