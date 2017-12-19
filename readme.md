@@ -7,7 +7,6 @@ This is a docker repository that runs on [Docker](https://www.docker.com/).
 
 > Helpful commands for developing
 
-```
 Build nginx:
 ```bash
 $ docker build -t propertywindow/nginx:latest nginx/
