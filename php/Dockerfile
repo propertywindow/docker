@@ -21,6 +21,7 @@ RUN apt-get update \
 		libmemcached-dev \
 		g++ \
 		libc-client-dev \
+		ssh \
 		libkrb5-dev --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
@@ -74,5 +75,6 @@ USER vagrant
 # Add Symfony alias
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias ll="ls -lah"' >> ~/.bashrc
+RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 WORKDIR /app
