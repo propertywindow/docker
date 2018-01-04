@@ -18,13 +18,15 @@ RUN apt-get update \
 		dnsutils \
 		zlib1g-dev \
 		libicu-dev \
-		memcached \
 		libmemcached-dev \
 		g++ \
 		libc-client-dev \
 		ssh \
 		libkrb5-dev --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
+
+RUN pecl install memcached \
+    && docker-php-ext-enable memcached
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -54,8 +56,6 @@ RUN docker-php-ext-enable redis xdebug \
         rm -rf /tmp/pear
 
 COPY php-custom.ini /usr/local/etc/php/conf.d/php-custom.ini
-
-RUN sudo pecl install memcache
 
 # Set your timezone here
 RUN rm /etc/localtime
