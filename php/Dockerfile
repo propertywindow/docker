@@ -18,6 +18,7 @@ RUN apt-get update \
 		dnsutils \
 		zlib1g-dev \
 		libicu-dev \
+		memcached \
 		libmemcached-dev \
 		g++ \
 		libc-client-dev \
@@ -53,6 +54,8 @@ RUN docker-php-ext-enable redis xdebug \
         rm -rf /tmp/pear
 
 COPY php-custom.ini /usr/local/etc/php/conf.d/php-custom.ini
+
+RUN sudo pecl install memcache
 
 # Set your timezone here
 RUN rm /etc/localtime
