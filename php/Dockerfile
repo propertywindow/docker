@@ -25,9 +25,6 @@ RUN apt-get update \
 		libkrb5-dev --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pecl install memcached \
-    && docker-php-ext-enable memcached
-
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer --version
@@ -54,6 +51,10 @@ RUN docker-php-ext-enable redis xdebug \
     && echo "xdebug.remote_port = 9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && \
         rm -rf /tmp/pear
+
+# Install memcached
+RUN pecl install memcached \
+    && docker-php-ext-enable memcached
 
 COPY php-custom.ini /usr/local/etc/php/conf.d/php-custom.ini
 
