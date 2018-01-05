@@ -37,8 +37,7 @@ RUN docker-php-ext-configure intl \
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install imap
 
-
-# install xdebug
+# Install xdebug
 RUN pecl install -o -f redis
 RUN pecl install xdebug
 RUN docker-php-ext-enable redis xdebug \
@@ -52,10 +51,11 @@ RUN docker-php-ext-enable redis xdebug \
     && \
         rm -rf /tmp/pear
 
-# Install memcached
-RUN pecl install memcached \
-    && docker-php-ext-enable memcached
+# Install Memcached
+RUN yes '' | pecl install -f memcached \
+  && docker-php-ext-enable memcached opcache
 
+# Copy php.ini
 COPY php-custom.ini /usr/local/etc/php/conf.d/php-custom.ini
 
 # Set your timezone here
