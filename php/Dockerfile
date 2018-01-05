@@ -51,10 +51,6 @@ RUN docker-php-ext-enable redis xdebug \
     && \
         rm -rf /tmp/pear
 
-# Install Memcached
-RUN yes '' | pecl install -f memcached \
-  && docker-php-ext-enable memcached opcache
-
 # Copy php.ini
 COPY php-custom.ini /usr/local/etc/php/conf.d/php-custom.ini
 
